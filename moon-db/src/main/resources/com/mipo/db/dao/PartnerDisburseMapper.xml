@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mipo.db.dao.PartnerDisburseMapper">
+  <resultMap id="BaseResultMap" type="com.mipo.db.damain.entity.PartnerDisburse">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="partner_id" jdbcType="BIGINT" property="partnerId" />
+    <result column="partner_no" jdbcType="VARCHAR" property="partnerNo" />
+    <result column="partner_app_no" jdbcType="VARCHAR" property="partnerAppNo" />
+    <result column="partner_unique_id" jdbcType="VARCHAR" property="partnerUniqueId" />
+    <result column="third_unique_id" jdbcType="VARCHAR" property="thirdUniqueId" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="bank_account_number" jdbcType="VARCHAR" property="bankAccountNumber" />
+    <result column="bank_account_holder_name" jdbcType="VARCHAR" property="bankAccountHolderName" />
+    <result column="disburse_description" jdbcType="VARCHAR" property="disburseDescription" />
+    <result column="disburse_money" jdbcType="DECIMAL" property="disburseMoney" />
+    <result column="customer_mobileNo" jdbcType="VARCHAR" property="customerMobileno" />
+    <result column="customer_email" jdbcType="VARCHAR" property="customerEmail" />
+    <result column="disburse_type" jdbcType="INTEGER" property="disburseType" />
+    <result column="channel_type" jdbcType="VARCHAR" property="channelType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="status_notify" jdbcType="INTEGER" property="statusNotify" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="biz_remark" jdbcType="VARCHAR" property="bizRemark" />
+    <result column="channel_remark" jdbcType="VARCHAR" property="channelRemark" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="result_time" jdbcType="TIMESTAMP" property="resultTime" />
+    <result column="manual_handler" jdbcType="TINYINT" property="manualHandler" />
+    <result column="status_message" jdbcType="VARCHAR" property="statusMessage" />
+    <result column="batch_id" jdbcType="BIGINT" property="batchId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, partner_id, partner_no, partner_app_no, partner_unique_id, third_unique_id, bank_code, 
+    bank_account_number, bank_account_holder_name, disburse_description, disburse_money, 
+    channel_type, status, status_notify,
+    remark, biz_remark, channel_remark, type, create_time, update_time, result_time, 
+    manual_handler, status_message, batch_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_partner_disburse
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_partner_disburse
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.mipo.db.damain.entity.PartnerDisburse">
+    insert into t_partner_disburse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="partnerId != null">
+        partner_id,
+      </if>
+      <if test="partnerNo != null">
+        partner_no,
+      </if>
+      <if test="partnerAppNo != null">
+        partner_app_no,
+      </if>
+      <if test="partnerUniqueId != null">
+        partner_unique_id,
+      </if>
+      <if test="thirdUniqueId != null">
+        third_unique_id,
+      </if>
+      <if test="bankCode != null">
+        bank_code,
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number,
+      </if>
+      <if test="bankAccountHolderName != null">
+        bank_account_holder_name,
+      </if>
+      <if test="disburseDescription != null">
+        disburse_description,
+      </if>
+      <if test="disburseMoney != null">
+        disburse_money,
+      </if>
+      <if test="customerMobileno != null">
+        customer_mobileNo,
+      </if>
+      <if test="customerEmail != null">
+        customer_email,
+      </if>
+      <if test="disburseType != null">
+        disburse_type,
+      </if>
+      <if test="channelType != null">
+        channel_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="statusNotify != null">
+        status_notify,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="bizRemark != null">
+        biz_remark,
+      </if>
+      <if test="channelRemark != null">
+        channel_remark,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="resultTime != null">
+        result_time,
+      </if>
+      <if test="manualHandler != null">
+        manual_handler,
+      </if>
+      <if test="statusMessage != null">
+        status_message,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="partnerId != null">
+        #{partnerId,jdbcType=BIGINT},
+      </if>
+      <if test="partnerNo != null">
+        #{partnerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerAppNo != null">
+        #{partnerAppNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerUniqueId != null">
+        #{partnerUniqueId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdUniqueId != null">
+        #{thirdUniqueId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountHolderName != null">
+        #{bankAccountHolderName,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseDescription != null">
+        #{disburseDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseMoney != null">
+        #{disburseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="customerMobileno != null">
+        #{customerMobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseType != null">
+        #{disburseType,jdbcType=INTEGER},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusNotify != null">
+        #{statusNotify,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bizRemark != null">
+        #{bizRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRemark != null">
+        #{channelRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultTime != null">
+        #{resultTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manualHandler != null">
+        #{manualHandler,jdbcType=TINYINT},
+      </if>
+      <if test="statusMessage != null">
+        #{statusMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mipo.db.damain.entity.PartnerDisburse">
+    update t_partner_disburse
+    <set>
+      <if test="partnerId != null">
+        partner_id = #{partnerId,jdbcType=BIGINT},
+      </if>
+      <if test="partnerNo != null">
+        partner_no = #{partnerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerAppNo != null">
+        partner_app_no = #{partnerAppNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerUniqueId != null">
+        partner_unique_id = #{partnerUniqueId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdUniqueId != null">
+        third_unique_id = #{thirdUniqueId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNumber != null">
+        bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountHolderName != null">
+        bank_account_holder_name = #{bankAccountHolderName,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseDescription != null">
+        disburse_description = #{disburseDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseMoney != null">
+        disburse_money = #{disburseMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="customerMobileno != null">
+        customer_mobileNo = #{customerMobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        customer_email = #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="disburseType != null">
+        disburse_type = #{disburseType,jdbcType=INTEGER},
+      </if>
+      <if test="channelType != null">
+        channel_type = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="statusNotify != null">
+        status_notify = #{statusNotify,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bizRemark != null">
+        biz_remark = #{bizRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRemark != null">
+        channel_remark = #{channelRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultTime != null">
+        result_time = #{resultTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manualHandler != null">
+        manual_handler = #{manualHandler,jdbcType=TINYINT},
+      </if>
+      <if test="statusMessage != null">
+        status_message = #{statusMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        batch_id = #{batchId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mipo.db.damain.entity.PartnerDisburse">
+    update t_partner_disburse
+    set partner_id = #{partnerId,jdbcType=BIGINT},
+      partner_no = #{partnerNo,jdbcType=VARCHAR},
+      partner_app_no = #{partnerAppNo,jdbcType=VARCHAR},
+      partner_unique_id = #{partnerUniqueId,jdbcType=VARCHAR},
+      third_unique_id = #{thirdUniqueId,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      bank_account_number = #{bankAccountNumber,jdbcType=VARCHAR},
+      bank_account_holder_name = #{bankAccountHolderName,jdbcType=VARCHAR},
+      disburse_description = #{disburseDescription,jdbcType=VARCHAR},
+      disburse_money = #{disburseMoney,jdbcType=DECIMAL},
+      customer_mobileNo = #{customerMobileno,jdbcType=VARCHAR},
+      customer_email = #{customerEmail,jdbcType=VARCHAR},
+      disburse_type = #{disburseType,jdbcType=INTEGER},
+      channel_type = #{channelType,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      status_notify = #{statusNotify,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      biz_remark = #{bizRemark,jdbcType=VARCHAR},
+      channel_remark = #{channelRemark,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      result_time = #{resultTime,jdbcType=TIMESTAMP},
+      manual_handler = #{manualHandler,jdbcType=TINYINT},
+      status_message = #{statusMessage,jdbcType=VARCHAR},
+      batch_id = #{batchId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getDisburseAll" resultMap="BaseResultMap">
+    select * from t_partner_disburse
+  </select>
+
+</mapper>
