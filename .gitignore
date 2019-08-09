@@ -1,0 +1,16 @@
+../.idea/
+.idea/
+.DS_Store
+.svn
+.classpath
+*/classes/
+.setting
+.gradle/
+.idea
+classes
+build
+*.iml
+/target/
+*jar
+*/target/
+*.war
