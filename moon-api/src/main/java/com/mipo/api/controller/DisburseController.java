@@ -46,6 +46,7 @@ public class DisburseController {
     @ApiOperation(value = "获取转账数据", notes = "获取所有转账数据带分页的")
     public PageBean getDisburseAll() {
         PageHelper.startPage(1,3);
+        System.out.println();
         List<PartnerDisburse> disburseAll = partnerDisburseService.getDisburseAll();
         //PageInfo<PartnerDisburse> partnerDisbursePageInfo = new PageInfo<>(disburseAll);
         return new PageBean(disburseAll);
